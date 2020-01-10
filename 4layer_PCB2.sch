@@ -1,0 +1,1118 @@
+EESchema Schematic File Version 4
+LIBS:4layer_PCB-cache
+EELAYER 29 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title "LED watch"
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L MCU_Microchip_ATmega:ATmega328-MMH U1
+U 1 1 5D08F0D4
+P 1900 3150
+F 0 "U1" V 1300 2700 50  0000 R CNN
+F 1 "ATmega328-MMH" V 1300 3450 50  0000 R CNN
+F 2 "QFN45P400X400X100-29N:QFN45P400X400X100-29N" H 1900 3150 50  0001 C CIN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/ATmega328_P%20AVR%20MCU%20with%20picoPower%20Technology%20Data%20Sheet%2040001984A.pdf" H 1900 3150 50  0001 C CNN
+	1    1900 3150
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C1
+U 1 1 5D09069D
+P 800 2550
+F 0 "C1" H 892 2596 50  0000 L CNN
+F 1 "100nF" H 892 2505 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0201_0603Metric" H 800 2550 50  0001 C CNN
+F 3 "~" H 800 2550 50  0001 C CNN
+	1    800  2550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C2
+U 1 1 5D091F4C
+P 800 4000
+F 0 "C2" H 892 4046 50  0000 L CNN
+F 1 "10uF" H 892 3955 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0201_0603Metric" H 800 4000 50  0001 C CNN
+F 3 "~" H 800 4000 50  0001 C CNN
+	1    800  4000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	800  2650 800  3900
+Wire Wire Line
+	1900 4650 800  4650
+Wire Wire Line
+	800  4650 800  4100
+$Comp
+L Switch:SW_SPST SW1
+U 1 1 5D097B93
+P 3100 950
+F 0 "SW1" H 3100 1185 50  0000 C CNN
+F 1 "SW_SPST" H 3100 1094 50  0000 C CNN
+F 2 "Source_Footprints:Switch_SPST" H 3100 950 50  0001 C CNN
+F 3 "~" H 3100 950 50  0001 C CNN
+	1    3100 950 
+	1    0    0    -1  
+$EndComp
+$Comp
+L Switch:SW_SPST SW2
+U 1 1 5D098956
+P 3100 1300
+F 0 "SW2" H 3100 1535 50  0000 C CNN
+F 1 "SW_SPST" H 3100 1444 50  0000 C CNN
+F 2 "Source_Footprints:Switch_SPST" H 3100 1300 50  0001 C CNN
+F 3 "~" H 3100 1300 50  0001 C CNN
+	1    3100 1300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:AVR-ISP-6 J1
+U 1 1 5D093ADF
+P 4650 2100
+F 0 "J1" H 4370 2196 50  0000 R CNN
+F 1 "ICSP-6" H 4370 2105 50  0000 R CNN
+F 2 "Source_Footprints:ICSP" V 4400 2150 50  0001 C CNN
+F 3 " ~" H 3375 1550 50  0001 C CNN
+	1    4650 2100
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	3150 2100 3150 2450
+Wire Wire Line
+	3050 2000 3050 2250
+Wire Wire Line
+	3050 2250 2500 2250
+Wire Wire Line
+	2950 1900 2950 2350
+Wire Wire Line
+	2950 2350 2500 2350
+Wire Wire Line
+	1900 1500 1900 1650
+Wire Wire Line
+	800  1500 800  2450
+$Comp
+L power:GND #PWR0101
+U 1 1 5D0EC36F
+P 3800 1100
+F 0 "#PWR0101" H 3800 850 50  0001 C CNN
+F 1 "GND" V 3800 900 50  0000 C CNN
+F 2 "" H 3800 1100 50  0001 C CNN
+F 3 "" H 3800 1100 50  0001 C CNN
+	1    3800 1100
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	2950 1900 4250 1900
+Wire Wire Line
+	3050 2000 4250 2000
+Wire Wire Line
+	3150 2100 4250 2100
+Wire Wire Line
+	4750 1500 4750 1600
+Connection ~ 1900 1500
+Wire Wire Line
+	2500 2050 2650 2050
+Wire Wire Line
+	2650 2050 2650 950 
+Wire Wire Line
+	2650 950  2900 950 
+Wire Wire Line
+	2900 1300 2750 1300
+Wire Wire Line
+	2750 1300 2750 2150
+Wire Wire Line
+	2750 2150 2500 2150
+Wire Wire Line
+	3300 950  3500 950 
+Wire Wire Line
+	3500 950  3500 1100
+Wire Wire Line
+	3500 1300 3300 1300
+Wire Wire Line
+	3800 1100 3500 1100
+Connection ~ 3500 1100
+Wire Wire Line
+	3500 1100 3500 1300
+Wire Wire Line
+	4100 2200 4250 2200
+Text Label 2950 3850 2    50   ~ 0
+COL_0
+Text Label 2950 3950 2    50   ~ 0
+COL_1
+Text Label 2950 4050 2    50   ~ 0
+COL_2
+Text Label 2950 4150 2    50   ~ 0
+COL_3
+Text Label 2950 4250 2    50   ~ 0
+COL_4
+Text Label 2950 4350 2    50   ~ 0
+COL_5
+$Comp
+L power:GND #PWR0102
+U 1 1 5D12F035
+P 4750 2800
+F 0 "#PWR0102" H 4750 2550 50  0001 C CNN
+F 1 "GND" V 4750 2600 50  0000 C CNN
+F 2 "" H 4750 2800 50  0001 C CNN
+F 3 "" H 4750 2800 50  0001 C CNN
+	1    4750 2800
+	1    0    0    -1  
+$EndComp
+Connection ~ 4750 1500
+Wire Wire Line
+	2500 2650 2800 2650
+Wire Wire Line
+	2500 2850 2800 2850
+Wire Wire Line
+	2500 2950 2800 2950
+Wire Wire Line
+	2500 3050 2800 3050
+Wire Wire Line
+	2500 3150 2800 3150
+Text Label 2800 2650 2    50   ~ 0
+ROW_1
+Text Label 2800 2850 2    50   ~ 0
+ROW_2
+Text Label 2800 2950 2    50   ~ 0
+ROW_3
+Text Label 2800 3050 2    50   ~ 0
+ROW_4
+Text Label 2800 3150 2    50   ~ 0
+ROW_5
+$Comp
+L Device:C_Small C3
+U 1 1 5D099945
+P 5550 2000
+F 0 "C3" H 5642 2046 50  0000 L CNN
+F 1 "100nF" H 5642 1955 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0201_0603Metric" H 5550 2000 50  0001 C CNN
+F 3 "~" H 5550 2000 50  0001 C CNN
+	1    5550 2000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5550 1500 5550 1900
+Wire Wire Line
+	5550 1500 4750 1500
+$Comp
+L Device:LED D6
+U 1 1 5D145E59
+P 7500 3900
+F 0 "D6" H 7493 4116 50  0000 C CNN
+F 1 "RED_HR" H 7500 4000 50  0000 C CNN
+F 2 "Source_Footprints:LED_0603" H 7500 3900 50  0001 C CNN
+F 3 "~" H 7500 3900 50  0001 C CNN
+	1    7500 3900
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED D5
+U 1 1 5D1470E7
+P 7500 3450
+F 0 "D5" H 7500 3650 50  0000 C CNN
+F 1 "RED_HR" H 7500 3550 50  0000 C CNN
+F 2 "Source_Footprints:LED_0603" H 7500 3450 50  0001 C CNN
+F 3 "~" H 7500 3450 50  0001 C CNN
+	1    7500 3450
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED D4
+U 1 1 5D148D25
+P 7500 3000
+F 0 "D4" H 7500 3200 50  0000 C CNN
+F 1 "RED_HR" H 7500 3100 50  0000 C CNN
+F 2 "Source_Footprints:LED_0603" H 7500 3000 50  0001 C CNN
+F 3 "~" H 7500 3000 50  0001 C CNN
+	1    7500 3000
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED D3
+U 1 1 5D14A99D
+P 7500 2550
+F 0 "D3" H 7500 2750 50  0000 C CNN
+F 1 "RED_HR" H 7500 2650 50  0000 C CNN
+F 2 "Source_Footprints:LED_0603" H 7500 2550 50  0001 C CNN
+F 3 "~" H 7500 2550 50  0001 C CNN
+	1    7500 2550
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED D2
+U 1 1 5D14C49C
+P 7500 2100
+F 0 "D2" H 7500 2300 50  0000 C CNN
+F 1 "RED_HR" H 7500 2200 50  0000 C CNN
+F 2 "Source_Footprints:LED_0603" H 7500 2100 50  0001 C CNN
+F 3 "~" H 7500 2100 50  0001 C CNN
+	1    7500 2100
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	7650 1250 7650 1650
+Wire Wire Line
+	7650 2100 7650 2550
+Wire Wire Line
+	7650 2550 7650 3000
+Connection ~ 7650 2550
+Wire Wire Line
+	7650 3000 7650 3450
+Connection ~ 7650 3000
+Wire Wire Line
+	7650 3450 7650 3900
+Connection ~ 7650 3450
+Wire Wire Line
+	7350 2100 7350 1950
+Connection ~ 7350 1950
+Wire Wire Line
+	7350 2550 7350 2400
+Connection ~ 7350 2400
+Wire Wire Line
+	7350 3000 7350 2850
+Connection ~ 7350 2850
+Wire Wire Line
+	7350 3450 7350 3300
+Connection ~ 7350 3300
+Wire Wire Line
+	7350 3900 7350 3750
+Connection ~ 7350 3750
+Wire Wire Line
+	7650 1650 7650 2100
+Connection ~ 7650 1650
+Connection ~ 7650 2100
+Text Label 6950 1500 0    50   ~ 0
+ROW_0
+Text Label 6950 1950 0    50   ~ 0
+ROW_1
+Text Label 6950 2400 0    50   ~ 0
+ROW_2
+Text Label 6950 2850 0    50   ~ 0
+ROW_3
+Text Label 6950 3300 0    50   ~ 0
+ROW_4
+Text Label 6950 3750 0    50   ~ 0
+ROW_5
+Wire Wire Line
+	7350 1650 7350 1500
+$Comp
+L Device:LED D7
+U 1 1 5D1D48C0
+P 8000 1650
+F 0 "D7" H 8000 1850 50  0000 C CNN
+F 1 "RED_HR" H 8000 1750 50  0000 C CNN
+F 2 "Source_Footprints:LED_0603" H 8000 1650 50  0001 C CNN
+F 3 "~" H 8000 1650 50  0001 C CNN
+	1    8000 1650
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	7850 1650 7850 1500
+$Comp
+L Device:LED D8
+U 1 1 5D1D7298
+P 8000 2100
+F 0 "D8" H 8000 2300 50  0000 C CNN
+F 1 "RED_HR" H 8000 2200 50  0000 C CNN
+F 2 "Source_Footprints:LED_0603" H 8000 2100 50  0001 C CNN
+F 3 "~" H 8000 2100 50  0001 C CNN
+	1    8000 2100
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	7850 2100 7850 1950
+$Comp
+L Device:LED D9
+U 1 1 5D1D9BF8
+P 8000 2550
+F 0 "D9" H 8000 2750 50  0000 C CNN
+F 1 "RED_HR" H 8000 2650 50  0000 C CNN
+F 2 "Source_Footprints:LED_0603" H 8000 2550 50  0001 C CNN
+F 3 "~" H 8000 2550 50  0001 C CNN
+	1    8000 2550
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	7850 2550 7850 2400
+$Comp
+L Device:LED D10
+U 1 1 5D1DC597
+P 8000 3000
+F 0 "D10" H 8000 3200 50  0000 C CNN
+F 1 "RED_HR" H 8000 3100 50  0000 C CNN
+F 2 "Source_Footprints:LED_0603" H 8000 3000 50  0001 C CNN
+F 3 "~" H 8000 3000 50  0001 C CNN
+	1    8000 3000
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	7850 3000 7850 2850
+$Comp
+L Device:LED D11
+U 1 1 5D1DF1EE
+P 8000 3450
+F 0 "D11" H 8000 3650 50  0000 C CNN
+F 1 "RED_HR" H 8000 3550 50  0000 C CNN
+F 2 "Source_Footprints:LED_0603" H 8000 3450 50  0001 C CNN
+F 3 "~" H 8000 3450 50  0001 C CNN
+	1    8000 3450
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	7850 3450 7850 3300
+$Comp
+L Device:LED D12
+U 1 1 5D1E1CAA
+P 8000 3900
+F 0 "D12" H 8000 4100 50  0000 C CNN
+F 1 "RED_HR" H 8000 4000 50  0000 C CNN
+F 2 "Source_Footprints:LED_0603" H 8000 3900 50  0001 C CNN
+F 3 "~" H 8000 3900 50  0001 C CNN
+	1    8000 3900
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	7850 3900 7850 3750
+$Comp
+L Device:LED D13
+U 1 1 5D1E49AC
+P 8500 1650
+F 0 "D13" H 8500 1850 50  0000 C CNN
+F 1 "BLUE_MIN" H 8500 1750 50  0000 C CNN
+F 2 "Source_Footprints:LED_0603" H 8500 1650 50  0001 C CNN
+F 3 "~" H 8500 1650 50  0001 C CNN
+	1    8500 1650
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	8350 1650 8350 1500
+$Comp
+L Device:LED D14
+U 1 1 5D1E74DD
+P 8500 2100
+F 0 "D14" H 8500 2300 50  0000 C CNN
+F 1 "BLUE_MIN" H 8500 2200 50  0000 C CNN
+F 2 "Source_Footprints:LED_0603" H 8500 2100 50  0001 C CNN
+F 3 "~" H 8500 2100 50  0001 C CNN
+	1    8500 2100
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	8350 2100 8350 1950
+$Comp
+L Device:LED D15
+U 1 1 5D1EA1E2
+P 8500 2550
+F 0 "D15" H 8500 2750 50  0000 C CNN
+F 1 "BLUE_MIN" H 8500 2650 50  0000 C CNN
+F 2 "Source_Footprints:LED_0603" H 8500 2550 50  0001 C CNN
+F 3 "~" H 8500 2550 50  0001 C CNN
+	1    8500 2550
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	8350 2550 8350 2400
+$Comp
+L Device:LED D16
+U 1 1 5D1ECF74
+P 8500 3000
+F 0 "D16" H 8500 3200 50  0000 C CNN
+F 1 "BLUE_MIN" H 8500 3100 50  0000 C CNN
+F 2 "Source_Footprints:LED_0603" H 8500 3000 50  0001 C CNN
+F 3 "~" H 8500 3000 50  0001 C CNN
+	1    8500 3000
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	8350 3000 8350 2850
+$Comp
+L Device:LED D17
+U 1 1 5D1EFD00
+P 8500 3450
+F 0 "D17" H 8500 3650 50  0000 C CNN
+F 1 "BLUE_MIN" H 8500 3550 50  0000 C CNN
+F 2 "Source_Footprints:LED_0603" H 8500 3450 50  0001 C CNN
+F 3 "~" H 8500 3450 50  0001 C CNN
+	1    8500 3450
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	8350 3450 8350 3300
+$Comp
+L Device:LED D18
+U 1 1 5D1F29B7
+P 8500 3900
+F 0 "D18" H 8500 4100 50  0000 C CNN
+F 1 "BLUE_MIN" H 8500 4000 50  0000 C CNN
+F 2 "Source_Footprints:LED_0603" H 8500 3900 50  0001 C CNN
+F 3 "~" H 8500 3900 50  0001 C CNN
+	1    8500 3900
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	8350 3900 8350 3750
+Wire Wire Line
+	8150 1250 8150 1650
+Connection ~ 8150 1650
+Wire Wire Line
+	8150 1650 8150 2100
+Connection ~ 8150 2100
+Wire Wire Line
+	8150 2100 8150 2550
+Connection ~ 8150 2550
+Wire Wire Line
+	8150 2550 8150 3000
+Connection ~ 8150 3000
+Wire Wire Line
+	8150 3000 8150 3450
+Connection ~ 8150 3450
+Wire Wire Line
+	8150 3450 8150 3900
+Wire Wire Line
+	8650 1250 8650 1650
+Connection ~ 8650 1650
+Wire Wire Line
+	8650 1650 8650 2100
+Connection ~ 8650 2100
+Wire Wire Line
+	8650 2100 8650 2550
+Connection ~ 8650 2550
+Wire Wire Line
+	8650 2550 8650 3000
+Connection ~ 8650 3000
+Wire Wire Line
+	8650 3000 8650 3450
+Connection ~ 8650 3450
+Wire Wire Line
+	8650 3450 8650 3900
+$Comp
+L Device:LED D19
+U 1 1 5D2117A2
+P 9000 1650
+F 0 "D19" H 9000 1850 50  0000 C CNN
+F 1 "BLUE_MIN" H 9000 1750 50  0000 C CNN
+F 2 "Source_Footprints:LED_0603" H 9000 1650 50  0001 C CNN
+F 3 "~" H 9000 1650 50  0001 C CNN
+	1    9000 1650
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED D20
+U 1 1 5D2117A8
+P 9000 2100
+F 0 "D20" H 9000 2300 50  0000 C CNN
+F 1 "BLUE_MIN" H 9000 2200 50  0000 C CNN
+F 2 "Source_Footprints:LED_0603" H 9000 2100 50  0001 C CNN
+F 3 "~" H 9000 2100 50  0001 C CNN
+	1    9000 2100
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED D21
+U 1 1 5D2117AE
+P 9000 2550
+F 0 "D21" H 9000 2750 50  0000 C CNN
+F 1 "BLUE_MIN" H 9000 2650 50  0000 C CNN
+F 2 "Source_Footprints:LED_0603" H 9000 2550 50  0001 C CNN
+F 3 "~" H 9000 2550 50  0001 C CNN
+	1    9000 2550
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED D22
+U 1 1 5D2117B4
+P 9000 3000
+F 0 "D22" H 9000 3200 50  0000 C CNN
+F 1 "BLUE_MIN" H 9000 3100 50  0000 C CNN
+F 2 "Source_Footprints:LED_0603" H 9000 3000 50  0001 C CNN
+F 3 "~" H 9000 3000 50  0001 C CNN
+	1    9000 3000
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED D23
+U 1 1 5D2117BA
+P 9000 3450
+F 0 "D23" H 9000 3650 50  0000 C CNN
+F 1 "BLUE_MIN" H 9000 3550 50  0000 C CNN
+F 2 "Source_Footprints:LED_0603" H 9000 3450 50  0001 C CNN
+F 3 "~" H 9000 3450 50  0001 C CNN
+	1    9000 3450
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED D24
+U 1 1 5D2117C0
+P 9000 3900
+F 0 "D24" H 9000 4100 50  0000 C CNN
+F 1 "BLUE_MIN" H 9000 4000 50  0000 C CNN
+F 2 "Source_Footprints:LED_0603" H 9000 3900 50  0001 C CNN
+F 3 "~" H 9000 3900 50  0001 C CNN
+	1    9000 3900
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	9150 1250 9150 1650
+Connection ~ 9150 1650
+Wire Wire Line
+	9150 1650 9150 2100
+Connection ~ 9150 2100
+Wire Wire Line
+	9150 2100 9150 2550
+Connection ~ 9150 2550
+Wire Wire Line
+	9150 2550 9150 3000
+Connection ~ 9150 3000
+Wire Wire Line
+	9150 3000 9150 3450
+Connection ~ 9150 3450
+Wire Wire Line
+	9150 3450 9150 3900
+Wire Wire Line
+	7350 2400 7850 2400
+Wire Wire Line
+	7350 2850 7850 2850
+Wire Wire Line
+	7350 3300 7850 3300
+Wire Wire Line
+	7350 3750 7850 3750
+Wire Wire Line
+	7350 1950 7850 1950
+Wire Wire Line
+	7350 1500 7850 1500
+Wire Wire Line
+	8850 1650 8850 1500
+Connection ~ 8850 1500
+Wire Wire Line
+	8850 2100 8850 1950
+Connection ~ 8850 1950
+Wire Wire Line
+	8850 2550 8850 2400
+Connection ~ 8850 2400
+Wire Wire Line
+	8850 3000 8850 2850
+Connection ~ 8850 2850
+Wire Wire Line
+	8850 3450 8850 3300
+Connection ~ 8850 3300
+Wire Wire Line
+	8850 3900 8850 3750
+Connection ~ 8350 2400
+Wire Wire Line
+	8350 2400 8850 2400
+Connection ~ 7850 2400
+Wire Wire Line
+	7850 2400 8350 2400
+Connection ~ 7850 1950
+Wire Wire Line
+	7850 1950 8350 1950
+Connection ~ 7850 1500
+Wire Wire Line
+	7850 1500 8350 1500
+Connection ~ 8350 1500
+Wire Wire Line
+	8350 1500 8850 1500
+Connection ~ 8350 1950
+Wire Wire Line
+	8350 1950 8850 1950
+Connection ~ 8350 2850
+Wire Wire Line
+	8350 2850 8850 2850
+Connection ~ 8350 3300
+Wire Wire Line
+	8350 3300 8850 3300
+Connection ~ 8350 3750
+Wire Wire Line
+	8350 3750 8850 3750
+Connection ~ 7850 3750
+Wire Wire Line
+	7850 3750 8350 3750
+Connection ~ 7850 3300
+Wire Wire Line
+	7850 3300 8350 3300
+Connection ~ 7850 2850
+Wire Wire Line
+	7850 2850 8350 2850
+Text Label 8400 1050 2    50   ~ 0
+COL_1
+Text Label 8900 1050 2    50   ~ 0
+COL_2
+Text Label 9400 1050 2    50   ~ 0
+COL_3
+Wire Wire Line
+	6300 3650 6400 3650
+Wire Wire Line
+	6400 1500 6150 1500
+Connection ~ 5550 1500
+Wire Wire Line
+	4750 2500 4750 2550
+Wire Wire Line
+	5550 2550 4750 2550
+Wire Wire Line
+	5550 2100 5550 2550
+Connection ~ 4750 2550
+Wire Wire Line
+	4750 2550 4750 2700
+Wire Wire Line
+	6300 2950 6300 2700
+Connection ~ 4750 2700
+Wire Wire Line
+	6300 2700 4750 2700
+Wire Wire Line
+	4750 2800 4750 2700
+$Comp
+L Device:LED D25
+U 1 1 5D3C8A9E
+P 9500 1650
+F 0 "D25" H 9500 1850 50  0000 C CNN
+F 1 "WHITE_+MIN" H 9500 1750 50  0000 C CNN
+F 2 "Source_Footprints:LED_0603" H 9500 1650 50  0001 C CNN
+F 3 "~" H 9500 1650 50  0001 C CNN
+	1    9500 1650
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED D26
+U 1 1 5D3C8AA4
+P 9500 2100
+F 0 "D26" H 9500 2300 50  0000 C CNN
+F 1 "WHITE_+MIN" H 9500 2200 50  0000 C CNN
+F 2 "Source_Footprints:LED_0603" H 9500 2100 50  0001 C CNN
+F 3 "~" H 9500 2100 50  0001 C CNN
+	1    9500 2100
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED D27
+U 1 1 5D3C8AAA
+P 9500 2550
+F 0 "D27" H 9500 2750 50  0000 C CNN
+F 1 "WHITE_+MIN" H 9500 2650 50  0000 C CNN
+F 2 "Source_Footprints:LED_0603" H 9500 2550 50  0001 C CNN
+F 3 "~" H 9500 2550 50  0001 C CNN
+	1    9500 2550
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED D28
+U 1 1 5D3C8AB0
+P 9500 3000
+F 0 "D28" H 9500 3200 50  0000 C CNN
+F 1 "WHITE_+MIN" H 9500 3100 50  0000 C CNN
+F 2 "Source_Footprints:LED_0603" H 9500 3000 50  0001 C CNN
+F 3 "~" H 9500 3000 50  0001 C CNN
+	1    9500 3000
+	-1   0    0    1   
+$EndComp
+Connection ~ 9650 1650
+Wire Wire Line
+	9650 1650 9650 2100
+Connection ~ 9650 2100
+Wire Wire Line
+	9650 2100 9650 2550
+Connection ~ 9650 2550
+Wire Wire Line
+	9650 2550 9650 3000
+$Comp
+L Device:LED D29
+U 1 1 5D3D0046
+P 10000 1650
+F 0 "D29" H 10000 1850 50  0000 C CNN
+F 1 "RED_DAY" H 10000 1750 50  0000 C CNN
+F 2 "Source_Footprints:LED_0603" H 10000 1650 50  0001 C CNN
+F 3 "~" H 10000 1650 50  0001 C CNN
+	1    10000 1650
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED D30
+U 1 1 5D3D004C
+P 10000 2100
+F 0 "D30" H 10000 2300 50  0000 C CNN
+F 1 "RED_DAY" H 10000 2200 50  0000 C CNN
+F 2 "Source_Footprints:LED_0603" H 10000 2100 50  0001 C CNN
+F 3 "~" H 10000 2100 50  0001 C CNN
+	1    10000 2100
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED D31
+U 1 1 5D3D0052
+P 10000 2550
+F 0 "D31" H 10000 2750 50  0000 C CNN
+F 1 "RED_DAY" H 10000 2650 50  0000 C CNN
+F 2 "Source_Footprints:LED_0603" H 10000 2550 50  0001 C CNN
+F 3 "~" H 10000 2550 50  0001 C CNN
+	1    10000 2550
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED D32
+U 1 1 5D3D0058
+P 10000 3000
+F 0 "D32" H 10000 3200 50  0000 C CNN
+F 1 "RED_DAY" H 10000 3100 50  0000 C CNN
+F 2 "Source_Footprints:LED_0603" H 10000 3000 50  0001 C CNN
+F 3 "~" H 10000 3000 50  0001 C CNN
+	1    10000 3000
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	10150 1250 10150 1650
+Connection ~ 10150 1650
+Wire Wire Line
+	10150 1650 10150 2100
+Connection ~ 10150 2100
+Wire Wire Line
+	10150 2100 10150 2550
+Wire Wire Line
+	8850 1950 9350 1950
+Wire Wire Line
+	8850 2400 9350 2400
+Wire Wire Line
+	8850 2850 9350 2850
+$Comp
+L Device:LED D33
+U 1 1 5D3D6CEA
+P 10000 3450
+F 0 "D33" H 10000 3650 50  0000 C CNN
+F 1 "RED_DAY" H 10000 3550 50  0000 C CNN
+F 2 "Source_Footprints:LED_0603" H 10000 3450 50  0001 C CNN
+F 3 "~" H 10000 3450 50  0001 C CNN
+	1    10000 3450
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	9850 1500 9850 1650
+Wire Wire Line
+	8850 1500 9350 1500
+Wire Wire Line
+	9350 3000 9350 2850
+Connection ~ 9350 2850
+Wire Wire Line
+	9350 2850 9850 2850
+Wire Wire Line
+	9350 2550 9350 2400
+Connection ~ 9350 2400
+Wire Wire Line
+	9350 2400 9850 2400
+Wire Wire Line
+	9350 2100 9350 1950
+Connection ~ 9350 1950
+Wire Wire Line
+	9350 1950 9850 1950
+Wire Wire Line
+	9350 1650 9350 1500
+Connection ~ 9350 1500
+Wire Wire Line
+	9350 1500 9850 1500
+Wire Wire Line
+	9850 2100 9850 1950
+Wire Wire Line
+	9850 2550 9850 2400
+Wire Wire Line
+	9850 3000 9850 2850
+Wire Wire Line
+	9850 3300 9850 3450
+Wire Wire Line
+	8850 3300 9850 3300
+Wire Wire Line
+	9650 1250 9650 1650
+Text Label 9900 1050 2    50   ~ 0
+COL_4
+Text Label 10400 1050 2    50   ~ 0
+COL_5
+Wire Wire Line
+	10150 2550 10150 3000
+Connection ~ 10150 2550
+Connection ~ 10150 3000
+Wire Wire Line
+	10150 3000 10150 3450
+$Comp
+L Device:LED D1
+U 1 1 5D14DD3A
+P 7500 1650
+F 0 "D1" H 7500 1850 50  0000 C CNN
+F 1 "RED_HR" H 7500 1750 50  0000 C CNN
+F 2 "Source_Footprints:LED_0603" H 7500 1650 50  0001 C CNN
+F 3 "~" H 7500 1650 50  0001 C CNN
+	1    7500 1650
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	1900 1200 1900 1500
+$Comp
+L Device:LED D34
+U 1 1 5D4BF223
+P 10000 3900
+F 0 "D34" H 10000 4100 50  0000 C CNN
+F 1 "RED_BATT" H 10000 4000 50  0000 C CNN
+F 2 "Source_Footprints:LED_0603" H 10000 3900 50  0001 C CNN
+F 3 "~" H 10000 3900 50  0001 C CNN
+	1    10000 3900
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	9850 3750 9850 3900
+Wire Wire Line
+	10150 3450 10150 3900
+Wire Wire Line
+	8850 3750 9850 3750
+Connection ~ 8850 3750
+$Comp
+L Device:R_Small_US R1
+U 1 1 5D4CE5CF
+P 7650 1150
+F 0 "R1" H 7718 1196 50  0000 L CNN
+F 1 "330" H 7718 1105 50  0000 L CNN
+F 2 "Resistor_SMD:R_0201_0603Metric" H 7650 1150 50  0001 C CNN
+F 3 "~" H 7650 1150 50  0001 C CNN
+	1    7650 1150
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small_US R2
+U 1 1 5D50E201
+P 8150 1150
+F 0 "R2" H 8218 1196 50  0000 L CNN
+F 1 "330" H 8218 1105 50  0000 L CNN
+F 2 "Resistor_SMD:R_0201_0603Metric" H 8150 1150 50  0001 C CNN
+F 3 "~" H 8150 1150 50  0001 C CNN
+	1    8150 1150
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small_US R3
+U 1 1 5D5153AF
+P 8650 1150
+F 0 "R3" H 8718 1196 50  0000 L CNN
+F 1 "330" H 8718 1105 50  0000 L CNN
+F 2 "Resistor_SMD:R_0201_0603Metric" H 8650 1150 50  0001 C CNN
+F 3 "~" H 8650 1150 50  0001 C CNN
+	1    8650 1150
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small_US R4
+U 1 1 5D51C41B
+P 9150 1150
+F 0 "R4" H 9218 1196 50  0000 L CNN
+F 1 "330" H 9218 1105 50  0000 L CNN
+F 2 "Resistor_SMD:R_0201_0603Metric" H 9150 1150 50  0001 C CNN
+F 3 "~" H 9150 1150 50  0001 C CNN
+	1    9150 1150
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small_US R5
+U 1 1 5D5233CF
+P 9650 1150
+F 0 "R5" H 9718 1196 50  0000 L CNN
+F 1 "330" H 9718 1105 50  0000 L CNN
+F 2 "Resistor_SMD:R_0201_0603Metric" H 9650 1150 50  0001 C CNN
+F 3 "~" H 9650 1150 50  0001 C CNN
+	1    9650 1150
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small_US R6
+U 1 1 5D52A355
+P 10150 1150
+F 0 "R6" H 10218 1196 50  0000 L CNN
+F 1 "330" H 10218 1105 50  0000 L CNN
+F 2 "Resistor_SMD:R_0201_0603Metric" H 10150 1150 50  0001 C CNN
+F 3 "~" H 10150 1150 50  0001 C CNN
+	1    10150 1150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	800  1500 1900 1500
+Connection ~ 10150 3450
+$Comp
+L power:GND #PWR0104
+U 1 1 5D43C1D8
+P 1900 4850
+F 0 "#PWR0104" H 1900 4600 50  0001 C CNN
+F 1 "GND" H 1905 4677 50  0000 C CNN
+F 2 "" H 1900 4850 50  0001 C CNN
+F 3 "" H 1900 4850 50  0001 C CNN
+	1    1900 4850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1900 4650 1900 4850
+Connection ~ 1900 4650
+Wire Wire Line
+	3150 2450 2500 2450
+Wire Wire Line
+	2500 2550 2800 2550
+Text Label 2800 2550 2    50   ~ 0
+ROW_0
+Wire Wire Line
+	2500 3850 2950 3850
+Wire Wire Line
+	2500 3950 2950 3950
+Wire Wire Line
+	2500 4050 2950 4050
+Wire Wire Line
+	2500 4150 2950 4150
+Wire Wire Line
+	2500 4250 2950 4250
+Wire Wire Line
+	2500 4350 2950 4350
+Wire Wire Line
+	6950 1500 7350 1500
+Connection ~ 7350 1500
+Wire Wire Line
+	6950 1950 7350 1950
+Wire Wire Line
+	6950 2400 7350 2400
+Wire Wire Line
+	6950 2850 7350 2850
+Wire Wire Line
+	6950 3300 7350 3300
+Wire Wire Line
+	6950 3750 7350 3750
+Text Label 7900 1050 2    50   ~ 0
+COL_0
+Wire Wire Line
+	7650 1050 7900 1050
+Wire Wire Line
+	8150 1050 8400 1050
+Wire Wire Line
+	8650 1050 8900 1050
+Wire Wire Line
+	9150 1050 9400 1050
+Wire Wire Line
+	9650 1050 9900 1050
+Wire Wire Line
+	10150 1050 10400 1050
+$Comp
+L Device:C_Small C4
+U 1 1 5D465311
+P 6400 3900
+F 0 "C4" H 6492 3946 50  0000 L CNN
+F 1 "100nF" H 6492 3855 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0201_0603Metric" H 6400 3900 50  0001 C CNN
+F 3 "~" H 6400 3900 50  0001 C CNN
+	1    6400 3900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6400 3650 6400 3800
+Connection ~ 6400 3650
+$Comp
+L power:GND #PWR0105
+U 1 1 5D47D969
+P 6400 4200
+F 0 "#PWR0105" H 6400 3950 50  0001 C CNN
+F 1 "GND" H 6405 4027 50  0000 C CNN
+F 2 "" H 6400 4200 50  0001 C CNN
+F 3 "" H 6400 4200 50  0001 C CNN
+	1    6400 4200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6400 4000 6400 4200
+Wire Wire Line
+	1900 1500 4750 1500
+$Comp
+L RTC:M41T62LC6F IC1
+U 1 1 5D090D67
+P 5700 3250
+F 0 "IC1" H 5700 4017 50  0000 C CNN
+F 1 "M41T62LC6F" H 5700 3926 50  0000 C CNN
+F 2 "M41T62LC6F:LCC90P230X50X80-8N" H 5700 3250 50  0001 L BNN
+F 3 "" H 5700 3250 50  0001 L BNN
+F 4 "M41T62LC6F" H 5700 3250 50  0001 L BNN "Field4"
+F 5 "M41T62 Series 1.3 to 4.4 V Serial I2C Real Time Clock Surface Mount - LCC-8" H 5700 3250 50  0001 L BNN "Field5"
+F 6 "STMicroelectronics" H 5700 3250 50  0001 L BNN "Field6"
+F 7 "None" H 5700 3250 50  0001 L BNN "Field7"
+F 8 "Unavailable" H 5700 3250 50  0001 L BNN "Field8"
+	1    5700 3250
+	1    0    0    1   
+$EndComp
+Wire Wire Line
+	2500 3350 4300 3350
+Wire Wire Line
+	4300 3450 4300 3350
+Wire Wire Line
+	5100 3450 4300 3450
+Wire Wire Line
+	4100 3450 4100 2200
+Wire Wire Line
+	2500 3450 4100 3450
+Wire Wire Line
+	5100 3150 4300 3150
+Wire Wire Line
+	4300 3150 4300 3250
+Wire Wire Line
+	4300 3250 2500 3250
+$Comp
+L 4layer_PCB-rescue:BS-7-ND-BS-7-ND BAT1
+U 1 1 5D4C7C20
+P 1900 1000
+F 0 "BAT1" H 1772 947 60  0000 R CNN
+F 1 "CR2016" H 1772 1053 60  0000 R CNN
+F 2 "Source_Footprints:CR2016" H 2150 1300 60  0001 L CNN
+F 3 "" V 1600 1200 60  0001 L CNN
+	1    1900 1000
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:GND #PWR0103
+U 1 1 5D4E23F5
+P 1900 800
+F 0 "#PWR0103" H 1900 550 50  0001 C CNN
+F 1 "GND" V 1900 600 50  0000 C CNN
+F 2 "" H 1900 800 50  0001 C CNN
+F 3 "" H 1900 800 50  0001 C CNN
+	1    1900 800 
+	-1   0    0    1   
+$EndComp
+NoConn ~ 5100 3350
+NoConn ~ 6300 3250
+NoConn ~ 2500 1950
+NoConn ~ 2500 3650
+NoConn ~ 2500 3750
+$Comp
+L schottky:BAT42 D35
+U 1 1 5D552BFD
+P 6150 2000
+F 0 "D35" V 6196 1921 50  0000 R CNN
+F 1 "BAT42W-V" V 6105 1921 50  0000 R CNN
+F 2 "Source_Footprints:SOD-523" H 6150 1825 50  0001 C CNN
+F 3 "http://www.vishay.com/docs/85660/bat42.pdf" H 6150 2000 50  0001 C CNN
+F 4 "STMicroelectronics" H 6150 2000 50  0001 C CNN "Field4"
+F 5 "None" H 6150 2000 50  0001 C CNN "Field5"
+F 6 "DO-35 Diodes Inc." H 6150 2000 50  0001 C CNN "Field6"
+F 7 "Unavailable" H 6150 2000 50  0001 C CNN "Field7"
+F 8 "BAT42" H 6150 2000 50  0001 C CNN "Field8"
+	1    6150 2000
+	0    -1   -1   0   
+$EndComp
+NoConn ~ 2000 1650
+NoConn ~ 1300 1950
+Connection ~ 6150 1500
+Wire Wire Line
+	6150 1500 5550 1500
+Wire Wire Line
+	6150 2550 5550 2550
+Connection ~ 5550 2550
+Wire Wire Line
+	6400 1500 6400 3650
+Wire Wire Line
+	6150 2100 6150 2550
+Wire Wire Line
+	6150 1500 6150 1900
+$EndSCHEMATC
