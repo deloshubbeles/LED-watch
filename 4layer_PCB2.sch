@@ -1,5 +1,5 @@
 EESchema Schematic File Version 4
-LIBS:4layer_PCB-cache
+LIBS:4layer_PCB2-cache
 EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
@@ -59,7 +59,7 @@ U 1 1 5D097B93
 P 3100 950
 F 0 "SW1" H 3100 1185 50  0000 C CNN
 F 1 "SW_SPST" H 3100 1094 50  0000 C CNN
-F 2 "Source_Footprints:Switch_SPST" H 3100 950 50  0001 C CNN
+F 2 "Source_Footprints:Switch_SPSTnew" H 3100 950 50  0001 C CNN
 F 3 "~" H 3100 950 50  0001 C CNN
 	1    3100 950 
 	1    0    0    -1  
@@ -70,7 +70,7 @@ U 1 1 5D098956
 P 3100 1300
 F 0 "SW2" H 3100 1535 50  0000 C CNN
 F 1 "SW_SPST" H 3100 1444 50  0000 C CNN
-F 2 "Source_Footprints:Switch_SPST" H 3100 1300 50  0001 C CNN
+F 2 "Source_Footprints:Switch_SPSTnew" H 3100 1300 50  0001 C CNN
 F 3 "~" H 3100 1300 50  0001 C CNN
 	1    3100 1300
 	1    0    0    -1  
@@ -651,8 +651,6 @@ Text Label 9400 1050 2    50   ~ 0
 COL_3
 Wire Wire Line
 	6300 3650 6400 3650
-Wire Wire Line
-	6400 1500 6150 1500
 Connection ~ 5550 1500
 Wire Wire Line
 	4750 2500 4750 2550
@@ -1059,7 +1057,7 @@ Wire Wire Line
 Wire Wire Line
 	4300 3250 2500 3250
 $Comp
-L 4layer_PCB-rescue:BS-7-ND-BS-7-ND BAT1
+L 4layer_PCB2-rescue:BS-7-ND-BS-7-ND-4layer_PCB-rescue BAT1
 U 1 1 5D4C7C20
 P 1900 1000
 F 0 "BAT1" H 1772 947 60  0000 R CNN
@@ -1085,34 +1083,28 @@ NoConn ~ 6300 3250
 NoConn ~ 2500 1950
 NoConn ~ 2500 3650
 NoConn ~ 2500 3750
+NoConn ~ 2000 1650
+NoConn ~ 1300 1950
+Wire Wire Line
+	6400 1500 6400 1900
+Wire Wire Line
+	5550 1500 6400 1500
+Wire Wire Line
+	6400 2100 6400 3650
 $Comp
 L schottky:BAT42 D35
 U 1 1 5D552BFD
-P 6150 2000
-F 0 "D35" V 6196 1921 50  0000 R CNN
-F 1 "BAT42W-V" V 6105 1921 50  0000 R CNN
-F 2 "Source_Footprints:SOD-523" H 6150 1825 50  0001 C CNN
-F 3 "http://www.vishay.com/docs/85660/bat42.pdf" H 6150 2000 50  0001 C CNN
-F 4 "STMicroelectronics" H 6150 2000 50  0001 C CNN "Field4"
-F 5 "None" H 6150 2000 50  0001 C CNN "Field5"
-F 6 "DO-35 Diodes Inc." H 6150 2000 50  0001 C CNN "Field6"
-F 7 "Unavailable" H 6150 2000 50  0001 C CNN "Field7"
-F 8 "BAT42" H 6150 2000 50  0001 C CNN "Field8"
-	1    6150 2000
-	0    -1   -1   0   
+P 6400 2000
+F 0 "D35" V 6446 1921 50  0000 R CNN
+F 1 "BAT42W-V" V 6355 1921 50  0000 R CNN
+F 2 "Source_Footprints:SOD-523" H 6400 1825 50  0001 C CNN
+F 3 "http://www.vishay.com/docs/85660/bat42.pdf" H 6400 2000 50  0001 C CNN
+F 4 "STMicroelectronics" H 6400 2000 50  0001 C CNN "Field4"
+F 5 "None" H 6400 2000 50  0001 C CNN "Field5"
+F 6 "DO-35 Diodes Inc." H 6400 2000 50  0001 C CNN "Field6"
+F 7 "Unavailable" H 6400 2000 50  0001 C CNN "Field7"
+F 8 "BAT42" H 6400 2000 50  0001 C CNN "Field8"
+	1    6400 2000
+	0    1    1    0   
 $EndComp
-NoConn ~ 2000 1650
-NoConn ~ 1300 1950
-Connection ~ 6150 1500
-Wire Wire Line
-	6150 1500 5550 1500
-Wire Wire Line
-	6150 2550 5550 2550
-Connection ~ 5550 2550
-Wire Wire Line
-	6400 1500 6400 3650
-Wire Wire Line
-	6150 2100 6150 2550
-Wire Wire Line
-	6150 1500 6150 1900
 $EndSCHEMATC
