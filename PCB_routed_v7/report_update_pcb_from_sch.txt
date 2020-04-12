@@ -1,0 +1,76 @@
+Info: Processing component “BAT1:/5D4C7C20:Source_Footprints:CR2016”.
+Info: Processing component “U1:/5D08F0D4:QFN45P400X400X100-29N:QFN45P400X400X100-29N”.
+Info: Processing component “SW2:/5D098956:Source_Footprints:Switch_SPSTnew”.
+Info: Processing component “SW1:/5D097B93:Source_Footprints:Switch_SPSTnew”.
+Info: Processing component “C1:/5D09069D:Capacitor_SMD:C_0201_0603Metric”.
+Info: Processing component “R6:/5D52A355:Resistor_SMD:R_0201_0603Metric”.
+Info: Processing component “R5:/5D5233CF:Resistor_SMD:R_0201_0603Metric”.
+Info: Processing component “C2:/5D091F4C:Capacitor_SMD:C_0201_0603Metric”.
+Info: Processing component “C3:/5D099945:Capacitor_SMD:C_0201_0603Metric”.
+Info: Processing component “R4:/5D51C41B:Resistor_SMD:R_0201_0603Metric”.
+Info: Processing component “R3:/5D5153AF:Resistor_SMD:R_0201_0603Metric”.
+Info: Processing component “C4:/5D465311:Capacitor_SMD:C_0201_0603Metric”.
+Info: Processing component “R2:/5D50E201:Resistor_SMD:R_0201_0603Metric”.
+Info: Processing component “R1:/5D4CE5CF:Resistor_SMD:R_0201_0603Metric”.
+Info: Processing component “D1:/5D14DD3A:Source_Footprints:LED_0603”.
+Info: Processing component “D2:/5D14C49C:Source_Footprints:LED_0603”.
+Info: Processing component “D3:/5D14A99D:Source_Footprints:LED_0603”.
+Info: Processing component “D4:/5D148D25:Source_Footprints:LED_0603”.
+Info: Processing component “D5:/5D1470E7:Source_Footprints:LED_0603”.
+Info: Processing component “D6:/5D145E59:Source_Footprints:LED_0603”.
+Info: Processing component “D7:/5D1D48C0:Source_Footprints:LED_0603”.
+Info: Processing component “D8:/5D1D7298:Source_Footprints:LED_0603”.
+Info: Processing component “D9:/5D1D9BF8:Source_Footprints:LED_0603”.
+Info: Processing component “D10:/5D1DC597:Source_Footprints:LED_0603”.
+Info: Processing component “D11:/5D1DF1EE:Source_Footprints:LED_0603”.
+Info: Processing component “D12:/5D1E1CAA:Source_Footprints:LED_0603”.
+Info: Processing component “D13:/5D1E49AC:Source_Footprints:LED_0603”.
+Info: Processing component “D14:/5D1E74DD:Source_Footprints:LED_0603”.
+Info: Processing component “D15:/5D1EA1E2:Source_Footprints:LED_0603”.
+Info: Processing component “D16:/5D1ECF74:Source_Footprints:LED_0603”.
+Info: Processing component “D17:/5D1EFD00:Source_Footprints:LED_0603”.
+Info: Processing component “D18:/5D1F29B7:Source_Footprints:LED_0603”.
+Info: Processing component “D19:/5D2117A2:Source_Footprints:LED_0603”.
+Info: Processing component “D20:/5D2117A8:Source_Footprints:LED_0603”.
+Info: Processing component “D21:/5D2117AE:Source_Footprints:LED_0603”.
+Info: Processing component “D22:/5D2117B4:Source_Footprints:LED_0603”.
+Info: Processing component “D23:/5D2117BA:Source_Footprints:LED_0603”.
+Info: Processing component “D24:/5D2117C0:Source_Footprints:LED_0603”.
+Info: Processing component “D25:/5D3C8A9E:Source_Footprints:LED_0603”.
+Info: Processing component “D26:/5D3C8AA4:Source_Footprints:LED_0603”.
+Info: Processing component “D27:/5D3C8AAA:Source_Footprints:LED_0603”.
+Info: Processing component “D28:/5D3C8AB0:Source_Footprints:LED_0603”.
+Info: Processing component “D29:/5D3D0046:Source_Footprints:LED_0603”.
+Info: Processing component “D30:/5D3D004C:Source_Footprints:LED_0603”.
+Info: Processing component “D31:/5D3D0052:Source_Footprints:LED_0603”.
+Info: Processing component “D32:/5D3D0058:Source_Footprints:LED_0603”.
+Info: Processing component “D33:/5D3D6CEA:Source_Footprints:LED_0603”.
+Info: Processing component “D34:/5D4BF223:Source_Footprints:LED_0603”.
+Info: Processing component “D35:/5D552BFD:Source_Footprints:SOD-523”.
+Info: Processing component “J1:/5D093ADF:Source_Footprints:ICSP”.
+Info: Processing component “IC1:/5D090D67:M41T62LC6F:LCC90P230X50X80-8N”.
+Add net Net-(C4-Pad1).
+Reconnect D35 pin C from Net-(BAT1-PadPos) to Net-(C4-Pad1).
+Reconnect D35 pin A from GND to Net-(BAT1-Pad1).
+Add net Net-(C4-Pad1).
+Reconnect IC1 pin 5 from Net-(BAT1-PadPos) to Net-(C4-Pad1).
+Add net Net-(BAT1-Pad1).
+Add net Net-(BAT1-Pad1).
+Reconnect J1 pin 2 from Net-(BAT1-PadPos) to Net-(BAT1-Pad1).
+Reconnect C4 pin 1 from Net-(BAT1-PadPos) to Net-(C4-Pad1).
+Add net Net-(C4-Pad1).
+Reconnect C3 pin 1 from Net-(BAT1-PadPos) to Net-(BAT1-Pad1).
+Add net Net-(BAT1-Pad1).
+Reconnect C1 pin 1 from Net-(BAT1-PadPos) to Net-(BAT1-Pad1).
+Add net Net-(BAT1-Pad1).
+Disconnect BAT1 pin Neg.
+Disconnect BAT1 pin Pos.
+Disconnect BAT1 pin Pos.
+Reconnect U1 pin 27 from Net-(U1-Pad27) to /ROW_1.
+Reconnect U1 pin 26 from Net-(U1-Pad26) to /ROW_0.
+Add net Net-(U1-Pad6).
+Reconnect U1 pin 6 from /ROW_1 to Net-(U1-Pad6).
+Add net Net-(U1-Pad5).
+Reconnect U1 pin 5 from /ROW_0 to Net-(U1-Pad5).
+Add net Net-(BAT1-Pad1).
+Reconnect U1 pin 3 from Net-(BAT1-PadPos) to Net-(BAT1-Pad1).
