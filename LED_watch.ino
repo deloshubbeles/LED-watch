@@ -19,31 +19,31 @@ const int hourRows = 6;
 const int hourCols = 2;
 const int minRows = 6;
 const int minCols = 2;
-const int dayNum = 7;
-const int dayCols = 1;
+const int dayRows = 1;
+const int dayColumns = 7;
 
 int t = 5;
 int rowPin = 6;
 int colPin = 6;
 int rowPin2 = 6;
 int colPin2 = 5;
-int rowPosHR;
-int colPosHR;
-int rowPosMin;
-int colPosMin;
-int numPosDAY;
+int hourRow;
+int hourColumn;
+int minuteRow;
+int minuteColumn;
+int dayColumn;
 int cathState = LOW;
 int anodState = HIGH;
 
 int hourArray[hourRows][hourCols] = {{1, 2}, {3, 4}, {5, 6}, {7, 8}, {9, 10}, {11, 12}};
 int minuteArray[minRows][minCols] = {{5, 10}, {15, 20}, {25, 30}, {35, 40}, {45, 50}, {55, 60}};
-int weekdayArray[dayNum] = {0, 1, 2, 3, 4, 5, 6};
+int weekdayArray[dayColumns] = {0, 1, 2, 3, 4, 5, 6};
 
 // - - - - - - - - - - - SETUP + LOOP - - - - - - - - - - - - - - - -
 
-void setup() {
-
-  ///REMINDER: no access to serial monitor
+void setup()
+{
+  // REMINDER: no access to serial monitor
 
   Wire.begin();                                 /// I2C communication with the RTC
   pinMode(button1, INPUT_PULLUP);               /// button1 pulled LOW when pressed
@@ -69,7 +69,7 @@ void loop()
 
   int buttonState1 = digitalRead(button1);
   if (buttonState1 == HIGH) {
-    //alloff();
+    allOff();
   } else {
     displayTime();
   }
@@ -77,12 +77,11 @@ void loop()
   /*
     int buttonState2 = digitalRead(button2);
     if (buttonState2 == HIGH) {
-    //alloff();
+    //allOff();
     } else {
     cylonTest();
     }*/
 }
-
 
 void wakeUp()
 {
@@ -91,16 +90,16 @@ void wakeUp()
 
 /// - - - - - - - - - - - - test function - - - - - - - - - - - - - - -
 
-void runner_watch()                                   /// tests all LEDS by running through each one
+void runnerWatch()                                   /// tests all LEDS by running through each one
 {
   for (int i = 0; i < rowPin2; i++)
   { for (int j = 0; j < colPin2; j++)
     {
-      alloff();
-      digitalWrite(rowLED[i], HIGH);                  /// turns off each LED
+      allOff();
+      digitalWrite(rowLED[i], HIGH);                  /// turns on each LED
       digitalWrite(colLED[j], LOW);
       delay(2);
-      digitalWrite(rowLED[i], LOW);                  /// turns on each LED
+      digitalWrite(rowLED[i], LOW);                  /// turns off each LED
       digitalWrite(colLED[j], HIGH);
       delay(2);
     }
@@ -111,21 +110,20 @@ void cylonTest() /// row (x) then column (y) -- runs across days of the week
 {
   for (int i = 0; i < 5; i++)
   {
-    //alloff();
-    LEDon(i, 5);
+    ledOn(i, 5);
     delay(t);
   }
   for (int j = 4; j >= 0; j--)
   {
-    LEDon(j, 5);
+    ledOn(j, 5);
     delay(t);
   }
-  alloff();
+  allOff();
 }
 
 /// - - - - - - - - - - - basic display functions - - - - - - - - - - - - - - - -
 
-void alloff()                             /// turns off all LEDs
+void allOff()                             /// turns off all LEDs
 {
   /// all cathode pins to 0V
   for (int i = 0; i < rowPin; i++)
@@ -139,17 +137,15 @@ void alloff()                             /// turns off all LEDs
   }
 }
 
-void LEDon(int row, int col)                /// turns on specfic LEDs
+void ledOn(int row, int col)                /// turns on specfic LEDs
 {
-  alloff();                               /// turn off other LEDs
   digitalWrite(rowLED[row], HIGH);        /// cathode pin to +5V
   digitalWrite(colLED[col], LOW);         /// anode pin to 0V
 }
 
 
-void LEDoff(int row, int col)                /// turns off specific LEDs
+void ledOff(int row, int col)                /// turns off specific LEDs
 {
-  alloff();                               /// turn off other LEDs
   digitalWrite(rowLED[row], LOW);         /// cathode pin to 0V
   digitalWrite(colLED[col], HIGH);         /// anode pin to +5V
 }
@@ -159,98 +155,70 @@ void LEDoff(int row, int col)                /// turns off specific LEDs
 
 void displayTime()
 {
-  findPosHR();                  /// finds position of hour led
-  findPosMin();                 /// finds position of minute led
-  LEDon(rowPosHR, colPosHR);     /// turns on hour led
-  delayMicroseconds(500);
-  //delay(1);
-  LEDon(rowPosMin, colPosMin);  /// turns on minute led
-
-  LEDoff(0, 0);
-  //LEDon(numPosDAY, 5);        /// turns on day led
+  turnOnHourLeds();
+  delay(1);
+  turnOnMinuteLeds();
+  delay(1);
+  turnOnDayLeds();
+  delay(2);
+  allOff();
 }
 
-void findPosHR()
+void turnOnHourLeds()
 {
-  DateTime now = (RTC.now());
-  int hourVal = (now.hour());
-  if (hourVal > 12) {
-    hourVal = (hourVal - 12);
-  }
-  else
-  {
+  DateTime now = RTC.now();
+  int hour = now.hour();
+  if (hour > 12) {
+    hour -= 12;
   };
   for (int i = 0; i < hourRows; i++) {
     for (int j = 0; j < hourCols; j++) {
-      if (hourVal == hourArray[i][j]) {
-        (rowPosHR = i);
-        (colPosHR = j);
+      if (hour == hourArray[i][j]) {
+        (hourRow = i);
+        (hourColumn = j);
       }
     }
   }
-  alloff();
+  ledOn(hourRow, hourColumn);
 }
 
-void findPosMin()
+void turnOnMinuteLeds()
 {
   DateTime now = (RTC.now());
-  int minuteVal = (now.minute());
-  for (int i = 0; i < minRows; i++) {
-    for (int j = 0; j < minCols; j++) {
-      if ((1 <= minuteVal) && (minuteVal <=  5)) {
-        LEDon(0, 2);
-      }
-      else if ((5 <= minuteVal) && (minuteVal <= 10)) {
-        LEDon(0, 3);
-      }
-      else if ((11 <= minuteVal) && (minuteVal <= 15)) {
-        LEDon(1, 2);
-      }
-      else if ((16 <= minuteVal) && (minuteVal <=  20)) {
-        LEDon(1, 3);
-      }
-      else if ((21 <= minuteVal) && (minuteVal <= 25)) {
-        LEDon(2, 2);
-      }
-      else if ((26 <= minuteVal) && (minuteVal <= 30)) {
-        LEDon(2, 3);
-      }
-      else if ((31 <= minuteVal) && (minuteVal <= 35)) {
-        LEDon(3, 2);
-      }
-      else if ((36 <= minuteVal) && (minuteVal <= 40)) {
-        LEDon(3, 3);
-      }
-      else if ((41 <= minuteVal) && (minuteVal <=  45)) {
-        LEDon(4, 2);
-      }
-      else if ((46 <= minuteVal) && (minuteVal <=  50)) {
-        LEDon(4, 3);
-      }
-      else if ((51 <= minuteVal) && (minuteVal <= 55)) {
-        LEDon(5, 2);
-      }
-      else if ((56 <= minuteVal) && (minuteVal <= 60)) {
-        LEDon(5, 3);
-      }
-      //(rowPosMin = i);
-      //(colPosMin = j);
+  int minute = (now.minute());
+
+  // Set minute
+  if (minute % 10 == 5) {
+    // The minute ends in 5
+    minuteColumn = 2;
+    minuteRow = (minute - 5) / 10;
+  } else if (minute % 10 == 0) {
+    // The minute ends in 0
+    minuteColumn = 3;
+    if (minute == 0) {
+      minuteRow = 5;
+    } else {
+      minuteRow = (minute / 10) - 1;
     }
   }
-  alloff();
+  ledOn(minuteRow, minuteColumn);
+
+  // Set minute remainder
+  // Take 6 instead of 5 to get a zero index row to set
+  int minuteRemainder = (minute % 10) - 6;
+  if (minuteRemainder >= 0) {
+    ledOn(minuteRemainder, 4);
+  }
 }
 
-void findPosDAY()
+void turnOnDayLeds()
 {
-  DateTime now = (RTC.now());
-  int weekdayVal = (now.dayOfWeek()); /// dayOfWeek for watch RTC
-  for (int i = 0; i < dayNum; i++) {
-    if ((1 < weekdayVal) && (weekdayVal <  6)) {
-      if (weekdayVal == weekdayArray[i]) {
-        {
-          (numPosDAY = i);
-        }
-      }
-    }
+  DateTime now = RTC.now();
+  // Take 1 away from dayOfWeek to get 0 indexed row to light up
+  int weekday = now.dayOfWeek() - 1;
+  if (weekday < 5)
+  {
+    // Only light up Monday - Friday
+    ledOn(weekday, 5);
   }
 }
