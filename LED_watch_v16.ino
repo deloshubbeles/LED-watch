@@ -1,6 +1,9 @@
 /// LED watch - version 15
 ///     -- Display time: button1 polls the RTC and turns on relevant LEDs on multiplexed display
 
+/// 01/11/21 -- added code for low power mode and interrupt - not tested
+
+
 #include "Wire.h"                    /// I2C library
 #include "LowPower.h"                /// Low power library for deep sleep mode
 #include "M41T62.h"                  /// RTC library for M41T62 (on-board watch) - NB: Use "dayOfWeek"
@@ -19,6 +22,7 @@ const int minCols = 2;
 const int dayNum = 7;
 const int dayCols = 1;
 
+int t = 5;
 int rowPin = 6;
 int colPin = 6;
 int rowPin2 = 6;
@@ -38,14 +42,16 @@ int weekdayArray[dayNum] = {0, 1, 2, 3, 4, 5, 6};
 // - - - - - - - - - - - SETUP + LOOP - - - - - - - - - - - - - - - -
 
 void setup() {
-  //There is no access to serial monitor
+
+  ///REMINDER: no access to serial monitor
+
   Wire.begin();                                 /// I2C communication with the RTC
-  pinMode(button1, INPUT_PULLUP);
-  pinMode(button2, INPUT_PULLUP);
-  RTC.begin();
+  pinMode(button1, INPUT_PULLUP);               /// button1 pulled LOW when pressed
+  pinMode(button2, INPUT_PULLUP);               /// button2 pulled LOW when pressed
+  RTC.begin();                                  /// start RTC
   RTC.adjust(DateTime(__DATE__, __TIME__));     /// set RTC time to computer time
 
-  for (int i = 0; i < rowPin; i++)
+  for (int i = 0; i < rowPin; i++)              /// set all LED pins to OUTPUT
   {
     pinMode(rowLED[i], OUTPUT);
   }
@@ -57,46 +63,69 @@ void setup() {
 
 void loop()
 {
+  attachInterrupt(digitalPinToInterrupt(button1), wakeUp, LOW);   /// allow button1 to trigger interrupt (wake up) when LOW
+  LowPower.powerDown(SLEEP_FOREVER, ADC_OFF, BOD_OFF);        /// enter power down state with Analog to Digital Converter (ADC) and Brown-out Detection (BOD) modules disabled
+  detachInterrupt(0);                                      /// disable external pin interrupt on wake up pin
+
   int buttonState1 = digitalRead(button1);
   if (buttonState1 == HIGH) {
-    alloff();
+    //alloff();
   } else {
     displayTime();
   }
+
   /*
     int buttonState2 = digitalRead(button2);
     if (buttonState2 == HIGH) {
-      alloff();
+    //alloff();
     } else {
-      // do something
-    }
-  */
+    cylonTest();
+    }*/
+}
+
+
+void wakeUp()
+{
+  // handler for the pin interrupt
 }
 
 /// - - - - - - - - - - - - test function - - - - - - - - - - - - - - -
 
-void runner()        /// single click button1 -- test all LEDS by running through each one
+void runner_watch()                                   /// tests all LEDS by running through each one
 {
-  cathState = !cathState;
-  anodState = !anodState;
-  for (int i = 0; i < rowPin; i++)
-  { for (int j = 0; j < colPin; j++)
+  for (int i = 0; i < rowPin2; i++)
+  { for (int j = 0; j < colPin2; j++)
     {
       alloff();
-      digitalWrite(rowLED[i], anodState);
-      digitalWrite(colLED[j], cathState);
-      delay(10);
-      digitalWrite(rowLED[i], cathState);
-      digitalWrite(colLED[j], anodState);
-      delay(10);
+      digitalWrite(rowLED[i], HIGH);                  /// turns off each LED
+      digitalWrite(colLED[j], LOW);
+      delay(2);
+      digitalWrite(rowLED[i], LOW);                  /// turns on each LED
+      digitalWrite(colLED[j], HIGH);
+      delay(2);
     }
   }
 }
 
+void cylonTest() /// row (x) then column (y) -- runs across days of the week
+{
+  for (int i = 0; i < 5; i++)
+  {
+    //alloff();
+    LEDon(i, 5);
+    delay(t);
+  }
+  for (int j = 4; j >= 0; j--)
+  {
+    LEDon(j, 5);
+    delay(t);
+  }
+  alloff();
+}
 
 /// - - - - - - - - - - - basic display functions - - - - - - - - - - - - - - - -
 
-void alloff()                             /// function to turn off all LEDs
+void alloff()                             /// turns off all LEDs
 {
   /// all cathode pins to 0V
   for (int i = 0; i < rowPin; i++)
@@ -110,7 +139,7 @@ void alloff()                             /// function to turn off all LEDs
   }
 }
 
-void LEDon(int row, int col)                /// function to turn on particular LEDs
+void LEDon(int row, int col)                /// turns on specfic LEDs
 {
   alloff();                               /// turn off other LEDs
   digitalWrite(rowLED[row], HIGH);        /// cathode pin to +5V
@@ -118,7 +147,7 @@ void LEDon(int row, int col)                /// function to turn on particular L
 }
 
 
-void LEDoff(int row, int col)                /// function to turn off particular LEDs
+void LEDoff(int row, int col)                /// turns off specific LEDs
 {
   alloff();                               /// turn off other LEDs
   digitalWrite(rowLED[row], LOW);         /// cathode pin to 0V
@@ -130,10 +159,14 @@ void LEDoff(int row, int col)                /// function to turn off particular
 
 void displayTime()
 {
-  findPosHR();                  /// finds position of hour
-  findPosMin();                 /// finds position of minute
+  findPosHR();                  /// finds position of hour led
+  findPosMin();                 /// finds position of minute led
   LEDon(rowPosHR, colPosHR);     /// turns on hour led
+  delayMicroseconds(500);
+  //delay(1);
   LEDon(rowPosMin, colPosMin);  /// turns on minute led
+
+  LEDoff(0, 0);
   //LEDon(numPosDAY, 5);        /// turns on day led
 }
 
@@ -155,6 +188,7 @@ void findPosHR()
       }
     }
   }
+  alloff();
 }
 
 void findPosMin()
