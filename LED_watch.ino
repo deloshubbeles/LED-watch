@@ -98,10 +98,10 @@ void runnerWatch()                                   /// tests all LEDS by runni
       allOff();
       digitalWrite(rowLED[i], HIGH);                  /// turns on each LED
       digitalWrite(colLED[j], LOW);
-      delay(2);
+      delay(2000);
       digitalWrite(rowLED[i], LOW);                  /// turns off each LED
       digitalWrite(colLED[j], HIGH);
-      delay(2);
+      delay(2000);
     }
   }
 }
@@ -156,11 +156,11 @@ void ledOff(int row, int col)                /// turns off specific LEDs
 void displayTime()
 {
   turnOnHourLeds();
-  delay(1);
+  delay(1000);
   turnOnMinuteLeds();
-  delay(1);
+  delay(1000);
   turnOnDayLeds();
-  delay(2);
+  delay(2000);
   allOff();
 }
 
@@ -187,26 +187,39 @@ void turnOnMinuteLeds()
   DateTime now = (RTC.now());
   int minute = (now.minute());
 
-  // Set minute
-  if (minute % 10 == 5) {
-    // The minute ends in 5
-    minuteColumn = 2;
-    minuteRow = (minute - 5) / 10;
-  } else if (minute % 10 == 0) {
-    // The minute ends in 0
+  // Set the minute column
+  if (minute % 10 < 5) {
     minuteColumn = 3;
-    if (minute == 0) {
-      minuteRow = 5;
-    } else {
-      minuteRow = (minute / 10) - 1;
-    }
+  } else {
+    minuteColumn = 2;
   }
-  ledOn(minuteRow, minuteColumn);
+
+  // Set minute row
+  if (minute < 5) {
+    minuteRow = -1;
+  } else if (minute < 15) {
+    minuteRow = 0;
+  } else if (minute < 25) {
+    minuteRow = 1;
+  } else if (minute < 35) {
+    minuteRow = 2;
+  } else if (minute < 45) {
+    minuteRow = 3;
+  } else if (minute < 55) {
+    minuteRow = 4;
+  } else {
+    minuteRow = 5;
+  }
+  if (minuteRow >= 0) {
+    // Turn on minute LED
+    ledOn(minuteRow, minuteColumn);
+  }
 
   // Set minute remainder
   // Take 6 instead of 5 to get a zero index row to set
   int minuteRemainder = (minute % 10) - 6;
   if (minuteRemainder >= 0) {
+    // Turn on minute remainder LED
     ledOn(minuteRemainder, 4);
   }
 }
