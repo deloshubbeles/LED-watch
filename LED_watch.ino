@@ -1,4 +1,3 @@
-/// LED watch - version 2.0
 
 #include "Wire.h"                    /// I2C library
 #include "LowPower.h"                /// Low power library for deep sleep mode
@@ -20,57 +19,51 @@ const int rowLED[NUM_ROW] = {0, 1, A0, A1, A2, A3};      /// pins for cathode (-
 
 int colIdx = 0;                               // Index of column to be refreshed
 uint8_t display[NUM_ROW][NUM_COL];            // Array holding what to display
+//int brightnessCount = 0;
+
+/// Brightness levels
+//uint8_t brights[] = {0, 2, 5, 7, 9, 13, 21, 31};
+//#define NUM_BRIGHTS (sizeof(brights) / sizeof(brights[0]))
+//#define MIN_BRIGHT (0)
+//#define MAX_BRIGHT (NUM_BRIGHTS - 1)
 
 const int hourRows = 6;
 const int hourCols = 2;
-const int minRows = 6;
-const int minCols = 2;
-const int dayRows = 1;
-const int dayColumns = 7;
 
-int t = 5;
 int rowPin = 6;
 int colPin = 6;
-int rowPin2 = 6;
-int colPin2 = 5;
 int hourRow;
 int hourColumn;
 int minuteRow;
 int minuteColumn;
-int dayColumn;
-int cathState = LOW;
-int anodState = HIGH;
 
 int hourArray[hourRows][hourCols] = {{1, 2}, {3, 4}, {5, 6}, {7, 8}, {9, 10}, {11, 12}};
-int minuteArray[minRows][minCols] = {{5, 10}, {15, 20}, {25, 30}, {35, 40}, {45, 50}, {55, 60}};
-int weekdayArray[dayColumns] = {0, 1, 2, 3, 4, 5, 6};
 
+/// - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-/// - - - - - - - - - - - ROUTINES - - - - - - - - - - - - - - - -
-
-/// Draws each column but so frequently you can't tell
-static void RefreshDisplay() {
-  bool rowState = ROW_ON;
-  int c, r, rowPtr;
-
-  // De-select old column
-  for (int c = 0; c < NUM_COL; c++)
-    digitalWrite(colLED[c], COL_OFF);
-
-  // De-select old rows
-  for (int r = 0; r < NUM_ROW; r++)
-    digitalWrite(rowLED[r], ROW_OFF);
-
-  colIdx = (colIdx + 1) % NUM_COL;
-
-  // Select current column
-  digitalWrite(colLED[colIdx], COL_ON);
-  c = colIdx;
-}
+///// Draws each column but so frequently you can't tell
+//static void RefreshDisplay() {
+//  bool rowState = ROW_ON;
+//  int c, r, rowPtr;
+//
+//  // De-select old column
+//  for (int c = 0; c < NUM_COL; c++)
+//    digitalWrite(colLED[c], COL_OFF);
+//
+//  // De-select old rows
+//  for (int r = 0; r < NUM_ROW; r++)
+//    digitalWrite(rowLED[r], ROW_OFF);
+//
+//  colIdx = (colIdx + 1) % NUM_COL;
+//
+//  // Select current column
+//  digitalWrite(colLED[colIdx], COL_ON);
+//  c = colIdx;
+//}
 
 /// - - - - - - - - - - - SETUP + LOOP - - - - - - - - - - - - - - - -
 
-/// REMINDER: no access to serial monitor
+/// No access to serial monitor
 
 void setup() {
   Wire.begin();                                 /// I2C communication with the RTC
@@ -92,25 +85,15 @@ void setup() {
 }
 
 void loop() {
-  //allOff();
-  displayTime();
-
   //attachInterrupt(digitalPinToInterrupt(button1), wakeUp, LOW);             /// allow button1 to trigger interrupt (wake up) when LOW
   //LowPower.powerDown(SLEEP_FOREVER, ADC_OFF, BOD_OFF);                      /// enter power down state with Analog to Digital Converter (ADC) and Brown-out Detection (BOD) modules disabled
   //detachInterrupt(digitalPinToInterrupt(button1));                          /// disable external pin interrupt on wake up pin
 
   //int buttonState1 = digitalRead(button1);
   //if (buttonState1 == LOW) {
-  //allOff();
+  displayTime();
 
   //} else {
-
-  //ClearDisplay();
-  //displayTime();
-  //cylonTest();
-  //runnerWatch();
-  //matrix();
-  //processing();
   //  }
   /*
       int buttonState2 = digitalRead(button2);
@@ -126,11 +109,7 @@ void wakeUp()
   /// handler for the pin interrupt
 }
 
-
 /// - - - - - - - - - - - display functions - - - - - - - - - - - - - - - -
-    /// allOff
-    /// ledOn
-    /// ledOff
 
 void allOff()                             /// turns off all LEDs
 {
@@ -160,11 +139,6 @@ void ledOff(int row, int col)                /// turns off specific LEDs
 }
 
 /// - - - - - - - - - - - - - - - time functions - - - - - - - - - - - - - - - -
-/// displayTime
-/// turnOnHourLeds
-/// turnOnMinuteLeds
-/// turnOnRemainderLeds
-/// turnOnDayLeds
 
 void displayTime()
 {
@@ -224,7 +198,7 @@ void turnOnRemainderLeds(int minuteRemainder)
   /// Set minute remainder
   /// Take 6 instead of 5 to get a zero index row to set
   if (minuteRemainder >= 0) {
-    ledOn(minuteRemainder, 4);
+    ledOn(minuteRemainder, 5);
   }
 }
 
@@ -238,76 +212,7 @@ void turnOnDayLeds(int weekday)
   }
 }
 
-/// - - - - - - - - - - - - other functions - - - - - - - - - - - - - - -
-/// runnerWatch
-/// cylonTest
-/// processing
-/// matrix
-
-void runnerWatch()                                   /// tests all LEDS by running through each one
-{
-  for (int i = 0; i < rowPin2; i++)
-  { for (int j = 0; j < colPin; j++)
-
-    {
-      //allOff();
-      digitalWrite(rowLED[i], HIGH);                  /// turns on each LED
-      digitalWrite(colLED[j], LOW);
-      delay(10);
-      digitalWrite(rowLED[i], LOW);                  /// turns off each LED
-      digitalWrite(colLED[j], HIGH);
-      //delay(1);
-    }
-  }
-  delay(10);
-
-  for (int j = 6; j < colPin; j--)
-  { for (int i = 6; i < rowPin2; i--)
-
-    {
-      //allOff();
-      digitalWrite(rowLED[i], HIGH);                  /// turns on each LED
-      digitalWrite(colLED[j], LOW);
-      delay(1);
-      digitalWrite(rowLED[i], LOW);                  /// turns off each LED
-      digitalWrite(colLED[j], HIGH);
-      //delay(1);
-    }
-  }
-}
-
-void cylonTest() /// row (x) then column (y) -- runs across days of the week
-{
-  for (int i = 0; i < 5; i++)
-  {
-    ledOn(i, 5);
-    delay(t);
-  }
-  for (int j = 4; j >= 0; j--)
-  {
-    ledOn(j, 5);
-    delay(t);
-  }
-  allOff();
-}
-
-void processing()
-{
-  for (int i = random(0, 6); i < 6; i++)
-  {
-    digitalWrite(rowLED[i], HIGH);
-    digitalWrite(colLED[i], LOW);
-    delay(random(4, 5));
-  }
-
-  for (int k = random(0, 6); k >= 0; k--)
-  {
-    digitalWrite(colLED[k], HIGH);
-    digitalWrite(rowLED[k], LOW);
-    delay(random(4, 5));
-  }
-  delay(random(4, 5));
-}
+/// - - - - - - - - - - - - pattern functions - - - - - - - - - - - - - - -
 
 void matrix()                /// turns on specfic LEDs
 {
