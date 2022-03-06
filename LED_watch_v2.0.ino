@@ -139,7 +139,7 @@ void displayTime()
   DateTime now = RTC.now();
   int hour = now.hour();
   int minute = (now.minute());
-  int minuteRemainder = (minute % 10) - 6;
+  int minuteRemainder = minute % 5;
   int weekday = now.dayOfWeek() - 1;
 
   /// set hour
@@ -194,9 +194,10 @@ void turnOnMinuteLeds(int minute)
 void turnOnRemainderLeds(int minuteRemainder)
 {
   /// Set minute remainder
-  /// Take 6 instead of 5 to get a zero index row to set
-  if (minuteRemainder >= 0) {
-    ledOn(minuteRemainder, 4);
+  if (minuteRemainder > 0) {
+    /// Take 1 from the minuteRemainder to set the zero indexed LED
+    /// e.g. 1 minute, set the (0, 4) LED
+    ledOn((minuteRemainder - 1), 4);
   }
 }
 
