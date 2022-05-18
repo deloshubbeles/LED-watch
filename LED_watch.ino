@@ -43,8 +43,6 @@ int weekday;
 
 int hourArray[hourRows][hourCols] = {{1, 2}, {3, 4}, {5, 6}, {7, 8}, {9, 10}, {11, 12}};
 
-uint8_t display[NUM_ROW][NUM_COL];  // This array holds the current image we want to display
-
 /// - - - - - - - - - - - SETUP + LOOP - - - - - - - - - - - - - - - -
 
 /// No access to serial monitor
@@ -145,11 +143,10 @@ void getTime()
   /// set hour
   if (hour == 0)
     hour = 12;
-
   hourRow = (hour - 1) / 2;
   hourColumn = (hour - 1) % 2;
 
-  /// Set minute
+  /// set minute
   minuteRow = minute / 10;
   minuteColumn = 2 + ((minute - 1) / 5)  % 2;
   minuteRemainder = minute % 5;
