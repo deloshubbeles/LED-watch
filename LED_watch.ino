@@ -1,5 +1,5 @@
-/// displaying time (5 minutes fast) with consistent brightness
-/// No flicker using TIMER_FREQ_HZ values of 1k to 10k, being dimmer and brighter, respectively.
+/// Displaying time (5 minutes fast) with consistent brightness
+/// No flicker using TIMER_FREQ_HZ values of 1.5k to 10k, being dimmer and brighter, respectively.
 
 #define TIMER_INTERRUPT_DEBUG         2
 #define _TIMERINTERRUPT_LOGLEVEL_     0
@@ -8,7 +8,8 @@
 #include "Wire.h"                    /// I2C library
 #include "M41T62.h"                  /// RTC library for M41T62 - NB: Use "dayOfWeek"
 #include "LowPower.h"                /// Low power library for deep sleep mode
-#include <TimerInterrupt.h>
+#include <TimerInterrupt.h>          /// Library for timer interrupt
+#include "OneButton.h"               /// Library for button functionality
 RTC_M41T62 RTC;
 
 #define TIMER_FREQ_HZ        10000.0        /// ~15k starts to act funny, 10k nice and bright, 1.5k dim but not flickering, 500 starts to flicker
