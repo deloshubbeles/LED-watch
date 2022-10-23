@@ -1,4 +1,4 @@
-### Low-Power
+### LowPower
 Lightweight low power library for Arduino.
 
 Version: 1.81
