@@ -3,6 +3,10 @@
 ### Objective
 To display the time and day of week on multiplexed LEDs with button presses.
 
+
+### Displaying the time
+![time](https://user-images.githubusercontent.com/46733227/168943461-fcb681b0-c0bd-46a5-9950-854870a2dffe.jpg)
+
 **Other intended functionality (yet to be implemented)**
 - Low power sleep mode to conserve power when inactive
 - Flash low battery warning LED when battery voltage drops too low
@@ -22,6 +26,3 @@ To display the time and day of week on multiplexed LEDs with button presses.
 
 ### PCB layers:
 ![Watch layers](https://user-images.githubusercontent.com/46733227/168943533-c018bb24-1415-47a0-b694-8574185afbfe.png)
-
-### Displaying the time
-![time](https://user-images.githubusercontent.com/46733227/168943461-fcb681b0-c0bd-46a5-9950-854870a2dffe.jpg)
