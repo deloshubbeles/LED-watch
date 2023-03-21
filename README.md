@@ -8,6 +8,7 @@ To display the time and day of week on multiplexed LEDs with button presses.
 - Flash low battery warning LED when battery voltage drops too low
 - Display LEDs at different brightnesses depending on time of day or button pressed (e.g., brighter in daylight, dimmer at night)
 - Stopwatch
+- Countdown timer
 
 ### Main components
 - [ATmega328P-MMHR (28-pin VQFN)](https://ww1.microchip.com/downloads/en/DeviceDoc/ATmega48A-PA-88A-PA-168A-PA-328-P-DS-DS40002061B.pdf)
