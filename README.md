@@ -13,11 +13,11 @@ To display the time and day of week on multiplexed LEDs with button presses, plu
 ### Displaying the time
 ![time](https://user-images.githubusercontent.com/46733227/168943461-fcb681b0-c0bd-46a5-9950-854870a2dffe.jpg)
 
-### Main components
+### Components
 - [ATmega328P-MMHR (28-pin VQFN)](https://ww1.microchip.com/downloads/en/DeviceDoc/ATmega48A-PA-88A-PA-168A-PA-328-P-DS-DS40002061B.pdf)
 - [M41T62 (8 pin LCC) real time clock](https://www.st.com/resource/en/datasheet/m41t62.pdf)
 - 34 multiplexed LEDs (18 red, 12 blue, 4 white)
-- CR2016 coin cell battery, ~90mAh
+- CR2016 coin cell battery (~90mAh) and battery holder
 - 2 x SPST tactile switches
 
 ### Schematic
