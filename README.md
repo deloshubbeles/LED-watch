@@ -1,11 +1,7 @@
 # LED Watch
 
 ### Objective
-To display the time and day of week on multiplexed LEDs with button presses.
-
-
-### Displaying the time
-![time](https://user-images.githubusercontent.com/46733227/168943461-fcb681b0-c0bd-46a5-9950-854870a2dffe.jpg)
+To display the time and day of week on multiplexed LEDs with button presses, plus more.
 
 **Other intended functionality (yet to be implemented)**
 - Low power sleep mode to conserve power when inactive
@@ -13,6 +9,9 @@ To display the time and day of week on multiplexed LEDs with button presses.
 - Display LEDs at different brightnesses depending on time of day or button pressed (e.g., brighter in daylight, dimmer at night)
 - Stopwatch
 - Countdown timer
+
+### Displaying the time
+![time](https://user-images.githubusercontent.com/46733227/168943461-fcb681b0-c0bd-46a5-9950-854870a2dffe.jpg)
 
 ### Main components
 - [ATmega328P-MMHR (28-pin VQFN)](https://ww1.microchip.com/downloads/en/DeviceDoc/ATmega48A-PA-88A-PA-168A-PA-328-P-DS-DS40002061B.pdf)
